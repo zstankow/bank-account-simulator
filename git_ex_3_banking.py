@@ -20,17 +20,30 @@ class Account:
     def withdraw(self, num):
         if self.balance - num < 0:
             print(f"You do not have sufficient funds to withdraw {num} dollars.")
-            print(f"The maximum amount you may withdraw is {self.balance}.")
+            print(f"The maximum amount you may withdraw is {self.balance}. Withdraw not completed.")
         else:
             self.balance -= num
 
     def acc_summary(self):
-        print(f"Your account ID is {self.id} and your current balance is {self.balance}")
+        print(f"Your account ID is {self.id} and your current balance is {self.balance} dollars.")
 
 
 if __name__ == "__main__":
     acc1 = Account()
     id1 = acc1.get_acc_num()
+    print(id1)
+    assert acc1.get_balance() == 0
+    acc1.deposit(100)
+    assert acc1.get_balance() == 100
+    acc1.withdraw(50)
+    assert acc1.get_balance() == 50
+    acc1.withdraw(60)
+    assert acc1.get_balance() == 50
+    acc1.acc_summary()
+
+
+
+
 
 
 
